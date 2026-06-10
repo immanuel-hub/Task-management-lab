@@ -1,3 +1,5 @@
+import sys, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from validation import validate_task_title, validate_task_description, validate_due_date
 
 tasks = []
@@ -16,7 +18,7 @@ def add_task(title, description, due_date):
     }
 
     tasks.append(task)
-    print("Task '" + task["title"] + "' added successfully.")
+    print("Task '" + task["title"] + "' added successfully!")
 
 
 def mark_task_as_complete(title):
