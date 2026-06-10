@@ -50,15 +50,26 @@ def add_task(title, description, due_date):
 def mark_task_as_complete(title):
     found = False
 
-    for task in tasks:
-        if task["title"].lower() == title.strip().lower():
+    try:
+        index = int(title.strip()) - 1
+        if 0 <= index < len(tasks):
+            task = tasks[index]
             found = True
             if task["completed"] == True:
                 print("Task '" + task["title"] + "' is already marked as complete.")
             else:
                 task["completed"] = True
-                print("Task '" + task["title"] + "' has been marked as complete.")
-            break
+                print("Task marked as complete!")
+    except ValueError:
+        for task in tasks:
+            if task["title"].lower() == title.strip().lower():
+                found = True
+                if task["completed"] == True:
+                    print("Task '" + task["title"] + "' is already marked as complete.")
+                else:
+                    task["completed"] = True
+                    print("Task marked as complete!")
+                break
 
     if found == False:
         print("No task found with the title '" + title + "'.")
