@@ -18,7 +18,7 @@ def add_task(title, description, due_date):
     }
 
     tasks.append(task)
-    print("Task '" + task["title"] + "' added successfully!")
+    print("Task added successfully!")
 
 
 def mark_task_as_complete(title):
