@@ -95,26 +95,23 @@ def view_pending_tasks():
         print("-----------------------------------")
 
 
-def calculate_progress():
-    total = len(tasks)
+def calculate_progress(tasks_list=None):
+    if tasks_list is None:
+        tasks_list = tasks
+
+    total = len(tasks_list)
 
     if total == 0:
         print("No tasks have been added yet.")
         return
 
     completed_count = 0
-    for task in tasks:
+    for task in tasks_list:
         if task["completed"] == True:
             completed_count = completed_count + 1
 
     percent = (completed_count / total) * 100
-    print("\n--- Progress ---")
-    print("Completed: " + str(completed_count) + " out of " + str(total) + " tasks")
-    print("Progress: " + str(round(percent, 1)) + "%")
-
-    filled = int(percent // 5)
-    bar = "[" + "#" * filled + "." * (20 - filled) + "]"
-    print(bar)
+    print(percent)
 
 
 def print_menu():
